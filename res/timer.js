@@ -5,11 +5,11 @@ $(document).ready(function() {
         clockFace: 'HourlyCounter',
         countdown: true,
         autoStart: false,
+        callbacks: {"stop" : play_bell }
     });
 });
 
 $(".timer-btn").click(function() {
-	clock.stop();
 	clock.setTime($(this).data("timer")*60);
 	clock.start();
 	$(".timer-btn").removeClass("active");
@@ -25,3 +25,8 @@ $(".timer-reset").click(function() {
 	clock.reset();
 	$(".timer-btn").removeClass("active");
 });
+
+function play_bell() {
+	a = document.getElementById("bell");
+	a.play();
+}
